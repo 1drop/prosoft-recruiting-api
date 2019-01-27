@@ -756,7 +756,7 @@ class PublicBewerberReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets dateien
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\MitarbeiterDateiReadOnlyDto[] $dateien Holt oder setzt die Dateien des
-     *                                                                             Mitarbeiters
+     *                                                                              Mitarbeiters
      *
      * @return $this
      */
@@ -1025,7 +1025,7 @@ class PublicBewerberReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets kommunikationen
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\KommunikationReadOnlyDto[] $kommunikationen Holt oder setzt die
-     *                                                                                  Kommunikationen
+     *                                                                                   Kommunikationen
      *
      * @return $this
      */
@@ -1203,7 +1203,7 @@ class PublicBewerberReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets profile
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\MitarbeiterProfilReadOnlyDto[] $profile Holt oder setzt die gespeicherten
-     *                                                                              Profile
+     *                                                                               Profile
      *
      * @return $this
      */
@@ -1492,7 +1492,7 @@ class PublicBewerberReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets werdegaenge
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\MitarbeiterWerdegangReadOnlyDto[] $werdegaenge Holt oder setzt die
-     *                                                                                     Werdegang-Elemente
+     *                                                                                      Werdegang-Elemente
      *
      * @return $this
      */

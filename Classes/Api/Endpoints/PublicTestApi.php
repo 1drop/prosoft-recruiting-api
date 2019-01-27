@@ -107,8 +107,8 @@ class PublicTestApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of null, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of null, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1PublicTestTestAnonymousGetWithHttpInfo()
     {
@@ -312,8 +312,8 @@ class PublicTestApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of null, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of null, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1PublicTestTestApiKeyOnlyGetWithHttpInfo()
     {
@@ -517,8 +517,8 @@ class PublicTestApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of null, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of null, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1PublicTestTestBereichGetWithHttpInfo()
     {

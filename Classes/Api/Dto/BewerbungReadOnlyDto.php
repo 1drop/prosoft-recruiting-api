@@ -488,7 +488,7 @@ class BewerbungReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets aktionen
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\BewerbungAktionReadOnlyDto[] $aktionen Holt oder setzt die
-     *                                                                             Bewerbungsaktionen
+     *                                                                              Bewerbungsaktionen
      *
      * @return $this
      */
@@ -610,7 +610,7 @@ class BewerbungReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets bearbeiter
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\BewerbungBearbeiterReadOnlyDto[] $bearbeiter Holt oder setzt die Bearbeiter
-     *                                                                                   (BewerbungBearbeiter)
+     *                                                                                    (BewerbungBearbeiter)
      *
      * @return $this
      */
@@ -1409,7 +1409,7 @@ class BewerbungReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets vertreter
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\BewerbungVertreterReadOnlyDto[] $vertreter Holt oder setzt die Vertreter
-     *                                                                                 (BewerbungVertreter)
+     *                                                                                  (BewerbungVertreter)
      *
      * @return $this
      */
@@ -1434,8 +1434,8 @@ class BewerbungReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets vorgesetzte
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\BewerbungVorgesetzterReadOnlyDto[] $vorgesetzte Holt oder setzt die
-     *                                                                                      Vorgesetzten
-     *                                                                                      (BewerbungVorgesetzter)
+     *                                                                                       Vorgesetzten
+     *                                                                                       (BewerbungVorgesetzter)
      *
      * @return $this
      */

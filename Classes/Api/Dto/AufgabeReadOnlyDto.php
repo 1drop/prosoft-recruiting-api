@@ -895,7 +895,7 @@ class AufgabeReadOnlyDto implements ModelInterface, ArrayAccess
      * Sets zuweisungen
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\AufgabeZuweisungReadOnlyDto[] $zuweisungen Holt oder setzt die Liste der
-     *                                                                                 zugewiesenen Benutzer/Gruppen
+     *                                                                                  zugewiesenen Benutzer/Gruppen
      *
      * @return $this
      */

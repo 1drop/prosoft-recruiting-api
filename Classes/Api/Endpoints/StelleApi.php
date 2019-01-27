@@ -92,8 +92,8 @@ class StelleApi
      * Einstellungen/API-Keys erstellt werden (Bereich: \"OpenStelle\")  \"Content-Type\": \"multipart/form-data\"
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\PublicStelleNeuanlageDto $body      Das PublicStelleNeuanlageReadWriteDto.
-     *                                                                          (optional)
-     * @param string                                                 $x_api_key x_api_key (optional)
+     *                                                                           (optional)
+     * @param string                                                  $x_api_key x_api_key (optional)
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -111,13 +111,13 @@ class StelleApi
      * Einstellungen/API-Keys erstellt werden (Bereich: \"OpenStelle\")  \"Content-Type\": \"multipart/form-data\"
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\PublicStelleNeuanlageDto $body      Das PublicStelleNeuanlageReadWriteDto.
-     *                                                                          (optional)
-     * @param string                                                 $x_api_key (optional)
+     *                                                                           (optional)
+     * @param string                                                  $x_api_key (optional)
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of null, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of null, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1StelleCreatePostWithHttpInfo($body = null, $x_api_key = null)
     {
@@ -174,8 +174,8 @@ class StelleApi
      * Einstellungen/API-Keys erstellt werden (Bereich: \"OpenStelle\")  \"Content-Type\": \"multipart/form-data\"
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\PublicStelleNeuanlageDto $body      Das PublicStelleNeuanlageReadWriteDto.
-     *                                                                          (optional)
-     * @param string                                                 $x_api_key (optional)
+     *                                                                           (optional)
+     * @param string                                                  $x_api_key (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -197,8 +197,8 @@ class StelleApi
      * Einstellungen/API-Keys erstellt werden (Bereich: \"OpenStelle\")  \"Content-Type\": \"multipart/form-data\"
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\PublicStelleNeuanlageDto $body      Das PublicStelleNeuanlageReadWriteDto.
-     *                                                                          (optional)
-     * @param string                                                 $x_api_key (optional)
+     *                                                                           (optional)
+     * @param string                                                  $x_api_key (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -235,8 +235,8 @@ class StelleApi
      * Create request for operation 'apiPublicV1StelleCreatePost'
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\PublicStelleNeuanlageDto $body      Das PublicStelleNeuanlageReadWriteDto.
-     *                                                                          (optional)
-     * @param string                                                 $x_api_key (optional)
+     *                                                                           (optional)
+     * @param string                                                  $x_api_key (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -347,8 +347,8 @@ class StelleApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of \Prosoft\RecruitingApi\Api\Dto\PublicStelleReadOnlyDto, HTTP
-     *                                                status code, HTTP response headers (array of strings)
+     * @return array                                   of \Prosoft\RecruitingApi\Api\Dto\PublicStelleReadOnlyDto, HTTP
+     *                                                 status code, HTTP response headers (array of strings)
      */
     public function apiPublicV1StelleGetStelleByIdGetWithHttpInfo($stelle_uuid = null)
     {
@@ -655,9 +655,9 @@ class StelleApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of
-     *                                                \Prosoft\RecruitingApi\Api\Dto\PaginationResultDtoPublicStelleListeReadOnlyDto,
-     *                                                HTTP status code, HTTP response headers (array of strings)
+     * @return array                                   of
+     *                                                 \Prosoft\RecruitingApi\Api\Dto\PaginationResultDtoPublicStelleListeReadOnlyDto,
+     *                                                 HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPublicV1StelleGetStellenFilteredGetWithHttpInfo(
         $keywords = null,
@@ -1048,9 +1048,9 @@ class StelleApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of
-     *                                                \Prosoft\RecruitingApi\Api\Dto\PaginationResultDtoPublicStelleListeReadOnlyDto,
-     *                                                HTTP status code, HTTP response headers (array of strings)
+     * @return array                                   of
+     *                                                 \Prosoft\RecruitingApi\Api\Dto\PaginationResultDtoPublicStelleListeReadOnlyDto,
+     *                                                 HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPublicV1StelleGetStellenGetWithHttpInfo($searchterm = null, $boerse = null)
     {

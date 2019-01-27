@@ -115,8 +115,8 @@ class BewerberApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of \Prosoft\RecruitingApi\Api\Dto\PublicBewerberReadOnlyDto, HTTP
-     *                                                status code, HTTP response headers (array of strings)
+     * @return array                                   of \Prosoft\RecruitingApi\Api\Dto\PublicBewerberReadOnlyDto, HTTP
+     *                                                 status code, HTTP response headers (array of strings)
      */
     public function apiPublicV1BewerberGetByIdGetWithHttpInfo($x_api_key = null, $bewerber_uuid = null)
     {
@@ -402,9 +402,9 @@ class BewerberApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of
-     *                                                \Prosoft\RecruitingApi\Api\Dto\PaginationResultDtoPublicBewerberListeReadOnlyDto,
-     *                                                HTTP status code, HTTP response headers (array of strings)
+     * @return array                                   of
+     *                                                 \Prosoft\RecruitingApi\Api\Dto\PaginationResultDtoPublicBewerberListeReadOnlyDto,
+     *                                                 HTTP status code, HTTP response headers (array of strings)
      */
     public function apiPublicV1BewerberGetBySearchTermGetWithHttpInfo($x_api_key = null, $searchterm = null)
     {
@@ -674,8 +674,8 @@ class BewerberApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of string, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of string, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1BewerberGetDateiByIdGetWithHttpInfo($x_api_key = null, $datei_uuid = null)
     {
@@ -959,8 +959,8 @@ class BewerberApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of string, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of string, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1BewerberGetProfileAsPdfGetWithHttpInfo($x_api_key = null, $profile_uuid = null)
     {

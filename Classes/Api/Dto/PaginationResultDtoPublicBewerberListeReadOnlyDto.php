@@ -218,7 +218,7 @@ class PaginationResultDtoPublicBewerberListeReadOnlyDto implements ModelInterfac
      * Sets items
      *
      * @param \Prosoft\RecruitingApi\Api\Dto\PublicBewerberListeReadOnlyDto[] $items Die Ergebnisse der angeforderten
-     *                                                                              Seite
+     *                                                                               Seite
      *
      * @return $this
      */

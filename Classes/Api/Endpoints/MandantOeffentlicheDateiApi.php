@@ -113,8 +113,8 @@ class MandantOeffentlicheDateiApi
      *
      * @throws \Prosoft\RecruitingApi\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array                                  of string, HTTP status code, HTTP response headers (array of
-     *                                                strings)
+     * @return array                                   of string, HTTP status code, HTTP response headers (array of
+     *                                                 strings)
      */
     public function apiPublicV1MandantOeffentlicheDateiGetAsStreamContentGetWithHttpInfo($uuid = null)
     {
