@@ -1,0 +1,2826 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "prosoftrecruiting API"
+    },
+    "securityDefinitions": {
+      "APIKeyHeader": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "X-ApiKey"
+      }
+    },
+    "paths": {
+        "/api/public/v1/Bewerber/GetBySearchTerm": {
+            "get": {
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "tags": [
+                    "Bewerber"
+                ],
+                "summary": "Holt alle Bewerber, bzw. falls ein Suchterminus angegeben ist, alle die diesem entsprechen.\r\nHeader-Daten:\r\n\"X-ApiKey\": \"ihrapikey\" - der API-Key kann in prosoftrecruiting unter Einstellungen/API-Keys erstellt werden (Bereich: \"OpenBewerber\")",
+                "operationId": "ApiPublicV1BewerberGetBySearchTermGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-ApiKey",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchterm",
+                        "in": "query",
+                        "description": "Der Suchterminus.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PaginationResultDto[PublicBewerberListeReadOnlyDto]"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Bewerber/GetById": {
+            "get": {
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "tags": [
+                    "Bewerber"
+                ],
+                "summary": "Holt die Daten eines Bewerbers.\r\nHeader-Daten:\r\n\"X-ApiKey\": \"ihrapikey\" - der API-Key kann in prosoftrecruiting unter Einstellungen/API-Keys erstellt werden (Bereich: \"OpenBewerber\")",
+                "operationId": "ApiPublicV1BewerberGetByIdGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-ApiKey",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "bewerberUuid",
+                        "in": "query",
+                        "description": "Die Uuid des Bewerbers.",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PublicBewerberReadOnlyDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Bewerber/GetDateiById": {
+            "get": {
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "tags": [
+                    "Bewerber"
+                ],
+                "summary": "Ermittelt die Datei eines Bewerbers anhand der Bewerberdatei-Uuid\r\nHeader-Daten:\r\n\"X-ApiKey\": \"ihrapikey\" - der API-Key kann in prosoftrecruiting unter Einstellungen/API-Keys erstellt werden (Bereich: \"OpenBewerber\")",
+                "operationId": "ApiPublicV1BewerberGetDateiByIdGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-ApiKey",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dateiUuid",
+                        "in": "query",
+                        "description": "Die Uuid der Datei.",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "format": "byte",
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Bewerber/GetProfileAsPdf": {
+            "get": {
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "tags": [
+                    "Bewerber"
+                ],
+                "summary": "Holt den Inhalt eines gespeicherten Profils als PDF.\r\nHeader-Daten:\r\n\"X-ApiKey\": \"ihrapikey\" - der API-Key kann in prosoftrecruiting unter Einstellungen/API-Keys erstellt werden (Bereich: \"OpenBewerber\")",
+                "operationId": "ApiPublicV1BewerberGetProfileAsPdfGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-ApiKey",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profileUuid",
+                        "in": "query",
+                        "description": "Die UUID des Bewerber-Profils.",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "format": "byte",
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Bewerbung/Create": {
+            "post": {
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "tags": [
+                    "Bewerbung"
+                ],
+                "summary": "Erstellt eine Online-Bewerbung in der prosoftrecruiting Inbox.\r\nHeader-Daten:\r\n\"X-ApiKey\": \"ihrapikey\" - der API-Key kann in prosoftrecruiting unter Einstellungen/API-Keys erstellt werden (Bereich: \"OpenStelle\")\r\n\"Content-Type\": \"multipart/form-data\"",
+                "operationId": "ApiPublicV1BewerbungCreatePost",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "X-ApiKey",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "bewerbung",
+                        "in": "formData",
+                        "description": "Bewerber-Daten im JSON-Format, der Aufbau kann mit GetNeuanlageModel ermittelt werden.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "attachments",
+                        "in": "formData",
+                        "description": "Dateien hochladen (Beispiel für eine Datei), es können beliebig viele Dateien als Anhang gesendet werden (multipart/formdata), gültige Dateiformate und max. Uploadgröße beachten.",
+                        "required": false,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Bewerbung/GetNeuanlageModel": {
+            "get": {
+                "tags": [
+                    "Bewerbung"
+                ],
+                "summary": "Gibt die Beschreibung des Objekts, das die Bewerberdaten enthält (für Bewerbung/Create) im JSON-Format als Beispiel zurück.\r\nDie Pflichtfelder sind in der Ansicht \"Model\" mit einem roten Stern markiert.\r\nNicht benötigte Properties können weggelassen werden.",
+                "operationId": "ApiPublicV1BewerbungGetNeuanlageModelGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PublicBewerbungNeuanlageDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Katalog/GetByRelationName": {
+            "get": {
+                "tags": [
+                    "Katalog"
+                ],
+                "summary": "Gibt Einträge und die Anzahl der Einträge aus Katalogen zurück.\r\nDiese können als Optionen für Auswahllisten z.B. im Bewerberformular verwendet werden.",
+                "operationId": "ApiPublicV1KatalogGetByRelationNameGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "entityName",
+                        "in": "query",
+                        "description": "Name der Entität, die die Relation enthält, für die Lookup-Einträge zurückgegeben werden sollen",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "relationName",
+                        "in": "query",
+                        "description": "Name der Relation, für die Lookup-Einträge zurückgegeben werden sollen",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nameProperty",
+                        "in": "query",
+                        "description": "Name der Property, deren Wert als Bezeichnung verwendet werden soll",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchText",
+                        "in": "query",
+                        "description": "Text, der in der Bezeichnung enthalten sein soll",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ignoreSelectable",
+                        "in": "query",
+                        "description": "true, wenn auch die veralteten Einträge zurückgegeben werden sollen, sonst false",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PaginationResultDto[LookupDto]"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/MandantOeffentlicheDatei/GetAsStreamContent": {
+            "get": {
+                "tags": [
+                    "MandantOeffentlicheDatei"
+                ],
+                "summary": "Ermittelt die Datei anhand der Uuid und gibt sie zurück.\r\nKann zum Holen von öffentlichen Dateien (z.B. Bilder etc.) verwendet werden.",
+                "operationId": "ApiPublicV1MandantOeffentlicheDateiGetAsStreamContentGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "Uuid der Datei",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "format": "byte",
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public/v1/PublicTest/TestAnonymous": {
+            "get": {
+                "tags": [
+                    "PublicTest"
+                ],
+                "summary": "Testet den anonymen Zugriff.",
+                "operationId": "ApiPublicV1PublicTestTestAnonymousGet",
+                "consumes": [],
+                "produces": [],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/PublicTest/TestApiKeyOnly": {
+            "get": {
+                "tags": [
+                    "PublicTest"
+                ],
+                "summary": "Testet den Zugriff mit ApiKey. ApiKeyBereich hier irrelevant.",
+                "operationId": "ApiPublicV1PublicTestTestApiKeyOnlyGet",
+                "consumes": [],
+                "produces": [],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/PublicTest/TestBereich": {
+            "get": {
+                "tags": [
+                    "PublicTest"
+                ],
+                "summary": "Testet den Zugriff mit ApiKey und passendem ApiKeyBereich.",
+                "operationId": "ApiPublicV1PublicTestTestBereichGet",
+                "consumes": [],
+                "produces": [],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/SocialNetworkParsing/ImportXingProfile": {
+            "post": {
+                "tags": [
+                    "SocialNetworkParsing"
+                ],
+                "summary": "Erstellt ein Mandanteingangsobjekt anhand von Xing-Daten",
+                "operationId": "ApiPublicV1SocialNetworkParsingImportXingProfilePost",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "xingParseParams",
+                        "in": "body",
+                        "description": "Die Xing-Daten",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/XingParseParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/SocialNetworkParsing/Ping": {
+            "get": {
+                "tags": [
+                    "SocialNetworkParsing"
+                ],
+                "summary": "Kann für die Verfügbarkeit des Controllers benutzt werden.",
+                "operationId": "ApiPublicV1SocialNetworkParsingPingGet",
+                "consumes": [],
+                "produces": [],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Stelle/Create": {
+            "post": {
+                "security": [
+                    {
+                        "APIKeyHeader": []
+                    }
+                ],
+                "tags": [
+                    "Stelle"
+                ],
+                "summary": "Erstellt eine Stelle.\r\nHeader-Daten:\r\n\"X-ApiKey\": \"ihrapikey\" - der API-Key kann in prosoftrecruiting unter Einstellungen/API-Keys erstellt werden (Bereich: \"OpenStelle\")\r\n\"Content-Type\": \"multipart/form-data\"",
+                "operationId": "ApiPublicV1StelleCreatePost",
+                "consumes": [
+                    "application/json-patch+json",
+                    "application/json",
+                    "text/json",
+                    "application/*+json"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "X-ApiKey",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "publicStelleNeuanlage",
+                        "in": "body",
+                        "description": "Das PublicStelleNeuanlageReadWriteDto.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/PublicStelleNeuanlageDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Stelle/GetStelleById": {
+            "get": {
+                "tags": [
+                    "Stelle"
+                ],
+                "summary": "Holt eine Stelle.",
+                "operationId": "ApiPublicV1StelleGetStelleByIdGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "stelleUuid",
+                        "in": "query",
+                        "description": "Die Uuid der Stelle.",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PublicStelleReadOnlyDto"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiErrorDto"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public/v1/Stelle/GetStellen": {
+            "get": {
+                "tags": [
+                    "Stelle"
+                ],
+                "summary": "Holt alle aktuell veröffentlichten Stellen.",
+                "operationId": "ApiPublicV1StelleGetStellenGet",
+                "consumes": [],
+                "produces": [
+                    "text/plain",
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "searchterm",
+                        "in": "query",
+                        "description": "Der Suchterminus.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "boerse",
+                        "in": "query",
+                        "description": "Slug der Stellenboerse, nach der gefiltert werden soll.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PaginationResultDto[PublicStelleListeReadOnlyDto]"
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/api/public/v1/Stelle/GetStellenFiltered": {
+            "get": {
+                "tags": [
+                    "Stelle"
+                ],
+                "summary": "Holt alle Stellen",
+                "operationId": "ApiPublicV1StelleGetStellenFilteredGet",
+                "consumes": [],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "keywords",
+                        "in": "query",
+                        "description": "Die Suchbegriffe, für die die Stellen geladen werden sollen",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "Die Seitennummer",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "Die Anzahl Records pro Seite",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Die geografische Breite (Latitude) des Standorts",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "lon",
+                        "in": "query",
+                        "description": "Die geografische Länge (Longitude) des Standorts",
+                        "required": false,
+                        "type": "number",
+                        "format": "double"
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "description": "Der Radius des Umkreises in km",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "abtUuids",
+                        "in": "query",
+                        "description": "Die Uuids der Unternehmensbereiche/Abteilungen",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vaUuids",
+                        "in": "query",
+                        "description": "Die Uuids der Vertragsarten",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "boerse",
+                        "in": "query",
+                        "description": "Der URL-Slug der Stellenbörse",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "generateCoordinates",
+                        "in": "query",
+                        "description": "Gibt an, ob für jede Stelle die Koordinaten des Standortes generiert werden sollen",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PaginationResultDto[PublicStelleListeReadOnlyDto]"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PaginationResultDto[PublicBewerberListeReadOnlyDto]": {
+            "description": "Das Pagination Ergebnis-Dto",
+            "type": "object",
+            "properties": {
+                "Items": {
+                    "description": "Die Ergebnisse der angeforderten Seite",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PublicBewerberListeReadOnlyDto"
+                    }
+                },
+                "TotalItems": {
+                    "format": "int32",
+                    "description": "Anzahl der gefundenen Ergebnisse",
+                    "type": "integer"
+                }
+            }
+        },
+        "PublicBewerberListeReadOnlyDto": {
+            "description": "Die Daten eines Mitarbeiters in der Bewerberliste",
+            "type": "object",
+            "properties": {
+                "Anrede": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Anrede."
+                },
+                "Email": {
+                    "description": "Holt oder setzt die E-Mail-Adresse.",
+                    "type": "string"
+                },
+                "Mobil": {
+                    "description": "Holt oder setzt die Mobilfunknummer.",
+                    "type": "string"
+                },
+                "Nachname": {
+                    "description": "Holt oder setzt den Nachnamen.",
+                    "type": "string"
+                },
+                "Telefon": {
+                    "description": "Holt oder setzt die Telefonnummer.",
+                    "type": "string"
+                },
+                "Titel": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Titel."
+                },
+                "Vorname": {
+                    "description": "Holt oder setzt den Vornamen.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "LookupDto": {
+            "description": "DTO zur Identifikation einfacher Objekte, z.B. von Katalogeinträgen.",
+            "type": "object",
+            "properties": {
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "PublicBewerberReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen Mitarbeiter-Daten",
+            "type": "object",
+            "properties": {
+                "AdresseHausnummer": {
+                    "description": "Holt oder setzt die Hausnummer.",
+                    "type": "string"
+                },
+                "AdresseLand": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt das Land."
+                },
+                "AdresseOrt": {
+                    "description": "Holt oder setzt den Ort.",
+                    "type": "string"
+                },
+                "AdressePlz": {
+                    "description": "Holt oder setzt die PLZ.",
+                    "type": "string"
+                },
+                "AdresseStrasse": {
+                    "description": "Holt oder setzt die Straße.",
+                    "type": "string"
+                },
+                "Anrede": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Anrede."
+                },
+                "ArbeitserlaubnisBis": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Datum wann die Arbeitserlaubnis endet.",
+                    "type": "string"
+                },
+                "AufenthaltserlaubnisBis": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Datum wann die Aufenthaltserlaubnis endet.",
+                    "type": "string"
+                },
+                "Avatar": {
+                    "$ref": "#/definitions/AvatarReadOnlyDto",
+                    "description": "Holt oder setzt den Avatar des Mitarbeiters"
+                },
+                "BevorzugterKanal": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den bevorzugten Kanal."
+                },
+                "Bewerbungen": {
+                    "description": "Holt oder setzt die Bewerbungen",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BewerbungReadOnlyDto"
+                    }
+                },
+                "Dateien": {
+                    "description": "Holt oder setzt die Dateien des Mitarbeiters",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MitarbeiterDateiReadOnlyDto"
+                    }
+                },
+                "Email": {
+                    "description": "Holt oder setzt die E-Mail-Adresse.",
+                    "type": "string"
+                },
+                "Familienstand": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Familienstand."
+                },
+                "Fax": {
+                    "description": "Holt oder setzt die FAX-Nummer.",
+                    "type": "string"
+                },
+                "Geburtsdatum": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Geburtsdatum.",
+                    "type": "string"
+                },
+                "Geburtsname": {
+                    "description": "Holt oder setzt den Geburtsnamen.",
+                    "type": "string"
+                },
+                "Geburtsort": {
+                    "description": "Holt oder setzt den Geburtsort.",
+                    "type": "string"
+                },
+                "IsEmbargoChecked": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Mitarbeiter bereits auf Embargos geprüft wurde.",
+                    "type": "boolean"
+                },
+                "IstEhemaligerMitarbeiter": {
+                    "description": "Holt oder setzt eine Wert, der angibt, ob es sich um einen ehemaligen Mitarbeiter handelt.",
+                    "type": "boolean"
+                },
+                "IstInternerMitarbeiter": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Mitarbeiter ein Interner Mitarbeiter ist.",
+                    "type": "boolean"
+                },
+                "IstPoolMitarbeiter": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Mitarbeiter im Mitarbeiter-Pool enthalten ist.",
+                    "type": "boolean"
+                },
+                "Kommunikationen": {
+                    "description": "Holt oder setzt die Kommunikationen",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/KommunikationReadOnlyDto"
+                    }
+                },
+                "MitarbeiterStatus": {
+                    "format": "int32",
+                    "description": "Holt oder setzt den MitarbeiterStatus.",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "type": "integer"
+                },
+                "Mobil": {
+                    "description": "Holt oder setzt die Mobilfunknummer.",
+                    "type": "string"
+                },
+                "Nachname": {
+                    "description": "Holt oder setzt den Nachnamen.",
+                    "type": "string"
+                },
+                "Namensvorsatz": {
+                    "description": "Holt oder setzt den Namensvorsatz.",
+                    "type": "string"
+                },
+                "Namenszusatz": {
+                    "description": "Holt oder setzt den Namenszusatz.",
+                    "type": "string"
+                },
+                "Nationalitaet": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Nationalität."
+                },
+                "Profile": {
+                    "description": "Holt oder setzt die gespeicherten Profile",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MitarbeiterProfilReadOnlyDto"
+                    }
+                },
+                "Skills": {
+                    "description": "Holt oder setzt die Skills",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MitarbeiterSkillReadOnlyDto"
+                    }
+                },
+                "Telefon": {
+                    "description": "Holt oder setzt die Telefonnummer.",
+                    "type": "string"
+                },
+                "Titel": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Titel."
+                },
+                "UrlFacebook": {
+                    "description": "Holt oder setzt die Facebook-URL.",
+                    "type": "string"
+                },
+                "UrlGooglePlus": {
+                    "description": "Holt oder setzt die GooglePlus-URL.",
+                    "type": "string"
+                },
+                "UrlLinkedIn": {
+                    "description": "Holt oder setzt die LinkedIn-URL.",
+                    "type": "string"
+                },
+                "UrlTwitter": {
+                    "description": "Holt oder setzt die Twitter-URL.",
+                    "type": "string"
+                },
+                "UrlXing": {
+                    "description": "Holt oder setzt die XING-URL.",
+                    "type": "string"
+                },
+                "Vorname": {
+                    "description": "Holt oder setzt den Vornamen.",
+                    "type": "string"
+                },
+                "Webseite": {
+                    "description": "Holt oder setzt die URL zur Website.",
+                    "type": "string"
+                },
+                "WeitereVornamen": {
+                    "description": "Holt oder setzt weitere Vornamen.",
+                    "type": "string"
+                },
+                "Werdegaenge": {
+                    "description": "Holt oder setzt die Werdegang-Elemente",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MitarbeiterWerdegangReadOnlyDto"
+                    }
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "AvatarReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für den öffentlichen MitarbeiterAvatar",
+            "type": "object",
+            "properties": {
+                "MimeType": {
+                    "description": "Holt oder setzt den MimeType des Avatars",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen Bewerbungsdaten",
+            "type": "object",
+            "properties": {
+                "Abteilung": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Abteilung."
+                },
+                "Aktionen": {
+                    "description": "Holt oder setzt die Bewerbungsaktionen",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BewerbungAktionReadOnlyDto"
+                    }
+                },
+                "AngenommenDurch": {
+                    "description": "Holt oder setzt die Information darüber, von wem die Bewerbung entgegengenommen wurde.",
+                    "type": "string"
+                },
+                "Arbeitsstunden": {
+                    "format": "double",
+                    "description": "Holt oder setzt die Arbeitsstunden.",
+                    "type": "number"
+                },
+                "ArbeitsstundenBis": {
+                    "format": "double",
+                    "description": "Holt oder setzt die ArbeitsstundenBis.",
+                    "type": "number"
+                },
+                "ArbeitsstundenZeitraum": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Zeitraum der Prosoft.Tenant.Dto.PublicV1.PublicBewerberReadOnlyDto.BewerbungReadOnlyDto.Arbeitsstunden ."
+                },
+                "Bearbeiter": {
+                    "description": "Holt oder setzt die Bearbeiter (BewerbungBearbeiter)",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BewerbungBearbeiterReadOnlyDto"
+                    }
+                },
+                "Berufserfahrung": {
+                    "format": "double",
+                    "description": "Holt oder setzt die Berufserfahrung (in Jahren).",
+                    "type": "number"
+                },
+                "Bewerbungsdatum": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Bewerbungsdatum.",
+                    "type": "string"
+                },
+                "BeworbenAls": {
+                    "description": "Gets or sets the beworben als.",
+                    "type": "string"
+                },
+                "Datenschutzfaelligkeitsdatum": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt ein Datum, das angibt, wann der Datensatz zur löschung nach EU-DSGVO vorgesehen ist",
+                    "type": "string"
+                },
+                "DatenspeicherungAbgelehnt": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt den Zeitpunkt der Ablehnung der Datenspeicherung.",
+                    "type": "string"
+                },
+                "DatenspeicherungErteiltVon": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Datum an dem der Mitarbeiter der Datenspeicherung zugestimmt hat",
+                    "type": "string"
+                },
+                "Eingangsmedium": {
+                    "$ref": "#/definitions/SystemNameLookupDto",
+                    "description": "Holt oder setzt das Eingangsmedium."
+                },
+                "Einsatzradius": {
+                    "format": "double",
+                    "description": "Holt oder setzt den Einsatzradius.",
+                    "type": "number"
+                },
+                "EintrittAb": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Eintrittsdatum.",
+                    "type": "string"
+                },
+                "Fragen": {
+                    "description": "Holt oder setzt die Fragen.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BewerbungFrageReadOnlyDto"
+                    }
+                },
+                "Gehalt": {
+                    "format": "double",
+                    "description": "Holt oder setzt das Gehalt.",
+                    "type": "number"
+                },
+                "GehaltWaehrung": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Währung des Gehalts."
+                },
+                "GehaltZeitraum": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Zeitraum zum Prosoft.Tenant.Dto.PublicV1.PublicBewerberReadOnlyDto.BewerbungReadOnlyDto.Gehalt ."
+                },
+                "IsEditable": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob die Entität bearbeitbar ist.",
+                    "type": "boolean"
+                },
+                "IsExported": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Mitarbeiter exportiert wurde",
+                    "type": "boolean"
+                },
+                "IstAktiv": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob die Bewerbung aktiv ist.",
+                    "type": "boolean"
+                },
+                "IstInitiativ": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob es sich um eine Initiativbewerbung handelt.",
+                    "type": "boolean"
+                },
+                "IstMitarbeiterBekannt": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Mitarbeiter bekannt ist.",
+                    "type": "boolean"
+                },
+                "Mandant": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Mandanten."
+                },
+                "Mandanten": {
+                    "description": "Holt oder setzt die freigegebenen Mandanten.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LookupDto"
+                    }
+                },
+                "MandantUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die Mandant-UUID.",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "MitarbeiterUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die MitarbeiterUuid.",
+                    "type": "string"
+                },
+                "Qualifikation": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Qualifikation."
+                },
+                "Quelle": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Quelle."
+                },
+                "QuelleFreitext": {
+                    "description": "Holt oder setzt den Freitext zur Prosoft.Tenant.Dto.PublicV1.PublicBewerberReadOnlyDto.BewerbungReadOnlyDto.Quelle .",
+                    "type": "string"
+                },
+                "SindUnterlagenAngefordert": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob Unterlagen angefordert wurden.",
+                    "type": "boolean"
+                },
+                "Status": {
+                    "$ref": "#/definitions/KatStatusLookupDto",
+                    "description": "Holt oder setzt den Status"
+                },
+                "Stelle": {
+                    "$ref": "#/definitions/BewerbungStelleMandantLookupDto",
+                    "description": "Holt oder setzt die Stelle."
+                },
+                "StellenanzeigeInfo": {
+                    "description": "Holt oder setzt die Information zur Stellenanzeige.",
+                    "type": "string"
+                },
+                "UnterlagenRueckversand": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob die Unterlagen zurück geschickt wurden.",
+                    "type": "boolean"
+                },
+                "VerfuegbarBis": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt ein Datum, bis wann der Mitarbeiter verfügbar ist.",
+                    "type": "string"
+                },
+                "Vertragsarten": {
+                    "description": "Holt oder setzt die Vertragsarten.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LookupDto"
+                    }
+                },
+                "Vertreter": {
+                    "description": "Holt oder setzt die Vertreter (BewerbungVertreter)",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BewerbungVertreterReadOnlyDto"
+                    }
+                },
+                "Vorgesetzte": {
+                    "description": "Holt oder setzt die Vorgesetzten (BewerbungVorgesetzter)",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BewerbungVorgesetzterReadOnlyDto"
+                    }
+                },
+                "Vorstellungstermin": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt den Vorstellungstermin.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "MitarbeiterDateiReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen MitarbeiterDateien",
+            "type": "object",
+            "properties": {
+                "Dateigroesse": {
+                    "format": "double",
+                    "description": "Holt oder setzt die Groesse der Datei.",
+                    "type": "number"
+                },
+                "Dateiname": {
+                    "description": "Holt oder setzt den Dateiname.",
+                    "type": "string"
+                },
+                "MimeType": {
+                    "description": "Holt oder setzt den MimeType.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "KommunikationReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen Kommunikationen-Daten",
+            "type": "object",
+            "properties": {
+                "Adressat": {
+                    "description": "Holt oder setzt den Adressaten.",
+                    "type": "string"
+                },
+                "Aktion": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Aktion."
+                },
+                "Aufgabe": {
+                    "$ref": "#/definitions/AufgabeReadOnlyDto",
+                    "description": "Holt oder setzt die Aufgabe."
+                },
+                "BccAdressat": {
+                    "description": "Holt oder setzt den BCC-Adressaten.",
+                    "type": "string"
+                },
+                "Beschreibung": {
+                    "description": "Holt oder setzt die Beschreibung (HTML).",
+                    "type": "string"
+                },
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung (plain).",
+                    "type": "string"
+                },
+                "CcAdressat": {
+                    "description": "Holt oder setzt den CC-Adressaten.",
+                    "type": "string"
+                },
+                "Ersteller": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Ersteller."
+                },
+                "Erstellt": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Erstelldatum.",
+                    "type": "string"
+                },
+                "ExternalMessageUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die Uuid zum identifizieren der Kommunikation außerhalb des Tenant.Web",
+                    "type": "string"
+                },
+                "Kategorie": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Kategorie.",
+                    "enum": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7
+                    ],
+                    "type": "integer"
+                },
+                "MandantUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die UUID des Mandanten. (Wird zum Senden einer SMS benötigt)",
+                    "type": "string"
+                },
+                "Mitarbeiter": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Mitarbeiter."
+                },
+                "MobilEmpfaenger": {
+                    "description": "Holt oder setzt die Mobilfunknummer des Empfängers",
+                    "type": "string"
+                },
+                "Richtung": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Richtung.",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "type": "integer"
+                },
+                "Status": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Status."
+                },
+                "Stelle": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Stelle."
+                },
+                "Typ": {
+                    "$ref": "#/definitions/SystemNameLookupDto",
+                    "description": "Holt oder setzt den Typ."
+                },
+                "Versandstatus": {
+                    "format": "int32",
+                    "description": "Holt oder setzt den Versandstatus",
+                    "enum": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "type": "integer"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "MitarbeiterProfilReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für MitarbeiterSavedProfil",
+            "type": "object",
+            "properties": {
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung.",
+                    "type": "string"
+                },
+                "ZuletztBearbeitet": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt den Zeitpunkt der letzten Bearbeitung.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "MitarbeiterSkillReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen MitarbeiterSkill-Daten",
+            "type": "object",
+            "properties": {
+                "Art": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Skillart.",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "type": "integer"
+                },
+                "Auspraegung": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Ausprägung.",
+                    "enum": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "type": "integer"
+                },
+                "Skill": {
+                    "$ref": "#/definitions/KatSkillLookupDto",
+                    "description": "Holt oder setzt den Skill."
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "MitarbeiterWerdegangReadOnlyDto": {
+            "description": "Implementiert Eigenschaften zur Darstellung des Werdegangs eines Mitarbeiters",
+            "type": "object",
+            "properties": {
+                "Abschluss": {
+                    "description": "Holt oder setzt die Bezeichnung des Abschlusses",
+                    "type": "string"
+                },
+                "Bei": {
+                    "description": "Holt oder setzt die Einrichtung des Werdegangs",
+                    "type": "string"
+                },
+                "Bis": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Enddatum des Werdegangs",
+                    "type": "string"
+                },
+                "Details": {
+                    "description": "Holt oder setzt die Details zum Werdegang",
+                    "type": "string"
+                },
+                "ParentEntityUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die Uuid des Mitarbeiters",
+                    "type": "string"
+                },
+                "Qualifikation": {
+                    "description": "Holt oder setzt den Namen der Qualifikation",
+                    "type": "string"
+                },
+                "Titel": {
+                    "description": "Holt oder setzt den Titel des Werdegangs",
+                    "type": "string"
+                },
+                "Typ": {
+                    "$ref": "#/definitions/KatWerdegangTypLookupDto",
+                    "description": "Holt oder setzt den Typ des Werdegangs"
+                },
+                "UseInMatch": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Datensatz im PerfectMatch beachtet werden soll.",
+                    "type": "boolean"
+                },
+                "Von": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Startdatum des Werdegangs",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungAktionReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für BewerbungAktion",
+            "type": "object",
+            "properties": {
+                "EntityName": {
+                    "description": "Holt oder setzt den Namen der Entity (z.B. \"BewerbungAktion\").",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "ProtokollEntityUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die UUID des Objekts zur Erstellung eines Protokolleintrags.",
+                    "type": "string"
+                },
+                "AusgabeUser": {
+                    "description": "Holt oder setzt den Fullname des AusgabeUser.",
+                    "type": "string"
+                },
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung.",
+                    "type": "string"
+                },
+                "ExecutionTime": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt die ExecutionTime.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungBearbeiterReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen BewerbungsBearbeiter-Daten",
+            "type": "object",
+            "properties": {
+                "Benutzer": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Benutzer"
+                },
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung",
+                    "type": "string"
+                },
+                "Gruppe": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Gruppe"
+                },
+                "GruppeMandant": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Mandanten der Gruppe"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "SystemNameLookupDto": {
+            "description": "Lookup-DTO mit SystemName",
+            "type": "object",
+            "properties": {
+                "SystemName": {
+                    "description": "Der Systemname des Eintrags (sprachunabhängige, vom Menschen lesbare Bezeichnung)",
+                    "type": "string"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungFrageReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen BewerbungFrage-Daten",
+            "type": "object",
+            "properties": {
+                "Antwort": {
+                    "description": "Holt oder setzt die Antwort.",
+                    "type": "string"
+                },
+                "Frage": {
+                    "description": "Holt oder setzt die Frage.",
+                    "type": "string"
+                },
+                "SortOrder": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Sortierreihenfolge.",
+                    "type": "integer"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "KatStatusLookupDto": {
+            "description": "Spezielles LookupDto für KatStatus.",
+            "type": "object",
+            "properties": {
+                "IsSelectable": {
+                    "description": "Holt oder setzt den Wert, der angibt, ob der Status veraltet ist.",
+                    "type": "boolean"
+                },
+                "IstPerfectMatchIrrelevant": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob der Status für Perfect Match irrelevant ist.",
+                    "type": "boolean"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungStelleMandantLookupDto": {
+            "description": "Die Daten des Mandanten, der bei der Bewerbung einer Stelle zugeordnet ist",
+            "type": "object",
+            "properties": {
+                "MandantUuid": {
+                    "format": "uuid",
+                    "description": "Die Uuid des Mandanten der Stelle",
+                    "type": "string"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungVertreterReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen BewerbungVertreter-Daten",
+            "type": "object",
+            "properties": {
+                "Benutzer": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Benutzer"
+                },
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung",
+                    "type": "string"
+                },
+                "Gruppe": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Gruppe"
+                },
+                "GruppeMandant": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Mandanten der Gruppe"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "BewerbungVorgesetzterReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen BewerbungVorgesetzter-Daten",
+            "type": "object",
+            "properties": {
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "AufgabeReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen Aufgabe-Daten",
+            "type": "object",
+            "properties": {
+                "Ausfuehrender": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Ausführenden Benutzer"
+                },
+                "Ausfuehrungszeitpunkt": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt den Zeitpunkt der Ausführung",
+                    "type": "string"
+                },
+                "Beschreibung": {
+                    "description": "Holt oder setzt die Beschreibung.",
+                    "type": "string"
+                },
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung.",
+                    "type": "string"
+                },
+                "ErinnerungRelativ": {
+                    "format": "int32",
+                    "description": "Holt oder setzt das Erinnerungsdatum.",
+                    "enum": [
+                        0,
+                        5,
+                        10,
+                        15,
+                        30,
+                        60,
+                        120,
+                        240,
+                        480,
+                        720,
+                        1440,
+                        2880,
+                        5760,
+                        10080,
+                        20160,
+                        -1
+                    ],
+                    "type": "integer"
+                },
+                "Ersteller": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Ersteller."
+                },
+                "Erstellungszeitpunkt": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt den Erstellungszeitpunkt",
+                    "type": "string"
+                },
+                "Faelligkeit": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Datum der Fälligkeit.",
+                    "type": "string"
+                },
+                "FaelligkeitRelativ": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die relativen Minuten zur Fälligkeit der Aufgabe",
+                    "type": "integer"
+                },
+                "Fortschritt": {
+                    "format": "double",
+                    "description": "Holt oder setzt den Fortschritt.",
+                    "type": "number"
+                },
+                "FristablaufRelativ": {
+                    "format": "int32",
+                    "description": "Holt oder setzt das Datum des Fristablaufs.",
+                    "enum": [
+                        0,
+                        5,
+                        10,
+                        15,
+                        30,
+                        60,
+                        120,
+                        240,
+                        480,
+                        720,
+                        1440,
+                        2880,
+                        5760,
+                        10080,
+                        20160,
+                        -1
+                    ],
+                    "type": "integer"
+                },
+                "IstErledigt": {
+                    "description": "Holt oder setzt einen Wert, oder angibt, ob die Aufgabe erledigt ist.",
+                    "type": "boolean"
+                },
+                "IstFristAbgelaufen": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob die Frist der Aufgabe abgelaufen ist",
+                    "type": "boolean"
+                },
+                "IstPrivat": {
+                    "description": "Holt oder setzt einen Wert, oder angibt, ob die Aufgabe als privat markiert wurde.",
+                    "type": "boolean"
+                },
+                "IstVorlage": {
+                    "description": "Holt oder setzt einen Wert, oder angibt, ob die Aufgabe als Vorlage verwendet wird.",
+                    "type": "boolean"
+                },
+                "Teilaufgaben": {
+                    "description": "Holt oder setzt die Teilaufgaben",
+                    "type": "string"
+                },
+                "Wichtigkeit": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Wichtigkeit.",
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "type": "integer"
+                },
+                "Zuweisungen": {
+                    "description": "Holt oder setzt die Liste der zugewiesenen Benutzer/Gruppen",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AufgabeZuweisungReadOnlyDto"
+                    }
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "KatSkillLookupDto": {
+            "description": "Erweitert das Prosoft.Tenant.Dto.LookupDto um die Prosoft.Tenant.Shared.Enums.SkillArt und die Gruppe.",
+            "type": "object",
+            "properties": {
+                "Art": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Skill-Art.",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "type": "integer"
+                },
+                "GrpUuid": {
+                    "format": "uuid",
+                    "description": "Holt oder setzt die Uuid der Skillgruppe",
+                    "type": "string"
+                },
+                "SkillSource": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Prosoft.Tenant.Shared.Enums.SkillQuelle",
+                    "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "type": "integer"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "KatWerdegangTypLookupDto": {
+            "description": "Die Daten eines Werdegangtyps",
+            "type": "object",
+            "properties": {
+                "SortOrder": {
+                    "format": "int32",
+                    "description": "Die Sortierreihenfolge innerhalb des Werdegangs",
+                    "type": "integer"
+                },
+                "SystemName": {
+                    "description": "Der Systemname des Eintrags (sprachunabhängige, vom Menschen lesbare Bezeichnung)",
+                    "type": "string"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "AufgabeZuweisungReadOnlyDto": {
+            "description": "Implementiert Methoden und Eigenschaften für die öffentlichen AufgabeZuweisung-Daten",
+            "type": "object",
+            "properties": {
+                "Benutzer": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Benutzer"
+                },
+                "Gruppe": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt die Gruppe"
+                },
+                "GruppeMandant": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Mandanten der Gruppe"
+                },
+                "Korrelation": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Art der Zuweisung",
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "type": "integer"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "ApiErrorDto": {
+            "description": "Dto für Api Errors",
+            "type": "object",
+            "properties": {
+                "Exception": {
+                    "description": "Holt die aufgetretene Exception",
+                    "type": "object",
+                    "readOnly": true
+                },
+                "Message": {
+                    "description": "Holt die lesbare Nachricht",
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "PublicBewerbungNeuanlageDto": {
+            "description": "Die Daten zur Neuanage einer Bewerbung",
+            "type": "object",
+            "properties": {
+                "Bewerbung": {
+                    "$ref": "#/definitions/BewerbungDto",
+                    "description": "Die Bewerbungsdaten"
+                },
+                "Mitarbeiter": {
+                    "$ref": "#/definitions/MitarbeiterDto",
+                    "description": "Die Daten des Mitarbeiters"
+                },
+                "Skills": {
+                    "description": "Die Skills des Mitarbeiters",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MitarbeiterNeuanlageSkillDto"
+                    }
+                },
+                "Werdegaenge": {
+                    "description": "Die Werdegänge des Mitarbeiters",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MitarbeiterWerdegangDto"
+                    }
+                }
+            }
+        },
+        "BewerbungDto": {
+            "description": "Die Bewerbungsdaten",
+            "type": "object",
+            "properties": {
+                "Arbeitsstunden": {
+                    "format": "double",
+                    "description": "Die Arbeitsstunden",
+                    "type": "number"
+                },
+                "ArbeitsstundenBis": {
+                    "format": "double",
+                    "description": "Die Arbeitsstunden bis",
+                    "type": "number"
+                },
+                "ArbeitsstundenZeitraum": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Der Zeitraum der Arbeitsstunden"
+                },
+                "Berufserfahrung": {
+                    "format": "double",
+                    "description": "Die Berufserfahrung (in Jahren)",
+                    "type": "number"
+                },
+                "Bewerbungsdatum": {
+                    "format": "date-time",
+                    "description": "Das Bewerbungsdatum",
+                    "type": "string"
+                },
+                "BeworbenAls": {
+                    "description": "\"beworben als\"",
+                    "type": "string"
+                },
+                "EintrittAb": {
+                    "format": "date-time",
+                    "description": "Das Eintrittsdatum",
+                    "type": "string"
+                },
+                "Gehalt": {
+                    "format": "double",
+                    "description": "Das Gehalt",
+                    "type": "number"
+                },
+                "GehaltWaehrung": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die Währung des Gehalts"
+                },
+                "GehaltZeitraum": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Der Zeitraum zum Gehalt"
+                },
+                "IstInitiativ": {
+                    "description": "true, wenn es sich um eine Initiativbewerbung handelt, sonst false",
+                    "type": "boolean"
+                },
+                "Mandant": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Der Mandant"
+                },
+                "Quelle": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die Quelle"
+                },
+                "QuelleFreitext": {
+                    "description": "Freitext zur Quelle",
+                    "type": "string"
+                },
+                "Stelle": {
+                    "$ref": "#/definitions/BewerbungStelleMandantLookupDto",
+                    "description": "Die Stelle"
+                },
+                "VerfuegbarBis": {
+                    "format": "date-time",
+                    "description": "Das Datum, bis wann der Bewerber verfügbar ist",
+                    "type": "string"
+                }
+            }
+        },
+        "MitarbeiterDto": {
+            "description": "Die Daten des Mitarbeiters",
+            "required": [
+                "Anrede",
+                "Email",
+                "Nachname",
+                "Vorname"
+            ],
+            "type": "object",
+            "properties": {
+                "AdresseHausnummer": {
+                    "description": "Die Hausnummer",
+                    "type": "string"
+                },
+                "AdresseLand": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Das Land"
+                },
+                "AdresseOrt": {
+                    "description": "Der Ort",
+                    "type": "string"
+                },
+                "AdressePlz": {
+                    "description": "Die PLZ",
+                    "type": "string"
+                },
+                "AdresseStrasse": {
+                    "description": "Die Straße",
+                    "type": "string"
+                },
+                "Anrede": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die Anrede"
+                },
+                "ArbeitserlaubnisBis": {
+                    "format": "date-time",
+                    "description": "Das Datum wann die Arbeitserlaubnis endet",
+                    "type": "string"
+                },
+                "AufenthaltserlaubnisBis": {
+                    "format": "date-time",
+                    "description": "Das Datum wann die Aufenthaltserlaubnis endet",
+                    "type": "string"
+                },
+                "BevorzugterKanal": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Der bevorzugte Kanal"
+                },
+                "Email": {
+                    "description": "Die E-Mail-Adresse",
+                    "type": "string"
+                },
+                "Familienstand": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Der Familienstand"
+                },
+                "Fax": {
+                    "description": "Die FAX-Nummer",
+                    "type": "string"
+                },
+                "Geburtsdatum": {
+                    "format": "date-time",
+                    "description": "Das Geburtsdatum",
+                    "type": "string"
+                },
+                "Geburtsname": {
+                    "description": "Der Geburtsname",
+                    "type": "string"
+                },
+                "Geburtsort": {
+                    "description": "Der Geburtsort",
+                    "type": "string"
+                },
+                "Mobil": {
+                    "description": "Die Mobilfunknummer",
+                    "type": "string"
+                },
+                "Nachname": {
+                    "description": "Der Nachname",
+                    "type": "string"
+                },
+                "Namensvorsatz": {
+                    "description": "Der Namensvorsatz",
+                    "type": "string"
+                },
+                "Namenszusatz": {
+                    "description": "Der Namenszusatz",
+                    "type": "string"
+                },
+                "Nationalitaet": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die Nationalität"
+                },
+                "Telefon": {
+                    "description": "Die Telefonnummer",
+                    "type": "string"
+                },
+                "Titel": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Der Titel"
+                },
+                "UrlFacebook": {
+                    "description": "Die Facebook-URL",
+                    "type": "string"
+                },
+                "UrlGooglePlus": {
+                    "description": "Die GooglePlus-URL",
+                    "type": "string"
+                },
+                "UrlLinkedIn": {
+                    "description": "Die LinkedIn-URL",
+                    "type": "string"
+                },
+                "UrlTwitter": {
+                    "description": "Die Twitter-URL",
+                    "type": "string"
+                },
+                "UrlXing": {
+                    "description": "Die XING-URL",
+                    "type": "string"
+                },
+                "Vorname": {
+                    "description": "Der Vorname",
+                    "type": "string"
+                },
+                "Webseite": {
+                    "description": "Die URL zur Website",
+                    "type": "string"
+                },
+                "WeitereVornamen": {
+                    "description": "Weitere Vornamen",
+                    "type": "string"
+                }
+            }
+        },
+        "MitarbeiterNeuanlageSkillDto": {
+            "description": "Die Daten eines noch nicht existierenden Mitarbeiterskills",
+            "type": "object",
+            "properties": {
+                "Auspraegung": {
+                    "format": "int32",
+                    "description": "Die Ausprägung",
+                    "enum": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "type": "integer"
+                },
+                "ChildEntity": {
+                    "$ref": "#/definitions/KatSkillDto",
+                    "description": "Der Skill"
+                }
+            }
+        },
+        "MitarbeiterWerdegangDto": {
+            "description": "Die Daten des Werdegangs eines Mitarbeiters",
+            "type": "object",
+            "properties": {
+                "Abschluss": {
+                    "$ref": "#/definitions/KatAbschlussLookupDto",
+                    "description": "Der Bildungsabschluss"
+                },
+                "Bei": {
+                    "description": "Die Einrichtung des Werdegangs",
+                    "type": "string"
+                },
+                "Bis": {
+                    "format": "date-time",
+                    "description": "Der Endzeitpunkt des Werdegangs",
+                    "type": "string"
+                },
+                "Details": {
+                    "description": "Die Details zum Werdegang",
+                    "type": "string"
+                },
+                "ParentEntity": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die UUID des Mitarbeiters"
+                },
+                "Qualifikation": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die Qualifikation des Werdegangs"
+                },
+                "Titel": {
+                    "description": "Der Titel des Werdegangs",
+                    "type": "string"
+                },
+                "Typ": {
+                    "$ref": "#/definitions/KatWerdegangTypLookupDto",
+                    "description": "Der Typ des Werdegangs"
+                },
+                "Von": {
+                    "format": "date-time",
+                    "description": "Der Startzeitpunkt des Werdegangs",
+                    "type": "string"
+                }
+            }
+        },
+        "KatSkillDto": {
+            "description": "Die Daten eines Skills",
+            "type": "object",
+            "properties": {
+                "Art": {
+                    "format": "int32",
+                    "description": "Die Art des Skills",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "type": "integer"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Skills",
+                    "type": "string"
+                },
+                "Grp": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Die Gruppe des Skills"
+                }
+            }
+        },
+        "KatAbschlussLookupDto": {
+            "description": "Die Daten eines Abschlusses",
+            "type": "object",
+            "properties": {
+                "Typ": {
+                    "format": "int32",
+                    "description": "Der Abschlusstyp",
+                    "enum": [
+                        1,
+                        2
+                    ],
+                    "type": "integer"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung des Eintrags.",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "PaginationResultDto[LookupDto]": {
+            "description": "Das Pagination Ergebnis-Dto",
+            "type": "object",
+            "properties": {
+                "Items": {
+                    "description": "Die Ergebnisse der angeforderten Seite",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LookupDto"
+                    }
+                },
+                "TotalItems": {
+                    "format": "int32",
+                    "description": "Anzahl der gefundenen Ergebnisse",
+                    "type": "integer"
+                }
+            }
+        },
+        "NotFoundResult": {
+            "type": "object",
+            "properties": {
+                "StatusCode": {
+                    "format": "int32",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
+        },
+        "XingParseParams": {
+            "description": "Daten des Xing-Profils",
+            "type": "object",
+            "properties": {
+                "Contacts": {
+                    "description": "Die Daten der Xing-Kontakte",
+                    "type": "string"
+                },
+                "Profile": {
+                    "description": "Die Daten des Xing-Profils",
+                    "type": "string"
+                },
+                "MandantUuid": {
+                    "format": "uuid",
+                    "description": "Die Uuid des Mandanten",
+                    "type": "string"
+                }
+            }
+        },
+        "PublicStelleNeuanlageDto": {
+            "description": "Ein DTO zur Neuanlage einer Stelle",
+            "required": [
+                "Bezeichnung",
+                "EinsatzortOrt",
+                "Mandant"
+            ],
+            "type": "object",
+            "properties": {
+                "Arbeitgeberleistung": {
+                    "description": "Holt oder setzt die Arbeitgeberleistung.",
+                    "type": "string"
+                },
+                "ArbeitgeberleistungHeader": {
+                    "description": "Holt oder setzt die Überschrift zur Arbeitgeberleistung.",
+                    "type": "string"
+                },
+                "Arbeitgebervorstellung": {
+                    "description": "Holt oder setzt die Arbeitgebervorstellung.",
+                    "type": "string"
+                },
+                "ArbeitgebervorstellungHeader": {
+                    "description": "Holt oder setzt die Überschrift zur Arbeitgebervorstellung.",
+                    "type": "string"
+                },
+                "Aufgaben": {
+                    "description": "Holt oder setzt die Aufgaben.",
+                    "type": "string"
+                },
+                "AufgabenHeader": {
+                    "description": "Holt oder setzt die Überschrift zu den Aufgaben.",
+                    "type": "string"
+                },
+                "Beginn": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt den Beginn.",
+                    "type": "string"
+                },
+                "BeginnAbSofort": {
+                    "description": "Holt oder setzt einen Wert, der angibt, ob die Stelle ab sofort beginnt.",
+                    "type": "boolean"
+                },
+                "Berufserfahrung": {
+                    "format": "double",
+                    "description": "Holt oder setzt die Berufserfahrung.",
+                    "type": "number"
+                },
+                "Bezeichnung": {
+                    "description": "Holt oder setzt die Bezeichnung.",
+                    "type": "string"
+                },
+                "BezeichnungAusschreibung": {
+                    "description": "Holt oder setzt den Titel für die Stellenanzeige.",
+                    "type": "string"
+                },
+                "DatumAb": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Datum, ab dem Veröffentlicht werden soll.",
+                    "type": "string"
+                },
+                "DatumBis": {
+                    "format": "date-time",
+                    "description": "Holt oder setzt das Datum, bis zu dem die Veröffentlichung läuft.",
+                    "type": "string"
+                },
+                "EinsatzortHausnummer": {
+                    "description": "Holt oder setzt die Hausnummer des Einsatzortes.",
+                    "type": "string"
+                },
+                "EinsatzortOrt": {
+                    "description": "Holt oder setzt den EinsatzortOrt.",
+                    "type": "string"
+                },
+                "EinsatzortPlz": {
+                    "description": "Holt oder setzt die Postleitzahl des Einsatzortes.",
+                    "type": "string"
+                },
+                "EinsatzortStrasse": {
+                    "description": "Holt oder setzt die Straße des Einsatzortes.",
+                    "type": "string"
+                },
+                "FachlicheAnforderungen": {
+                    "description": "Holt oder setzt die FachlicheAnforderungen.",
+                    "type": "string"
+                },
+                "FachlicheAnforderungenHeader": {
+                    "description": "Holt oder setzt die Überschrift für die fachlichen Anforderungen.",
+                    "type": "string"
+                },
+                "KontaktText": {
+                    "description": "Holt oder setzt den KontaktText",
+                    "type": "string"
+                },
+                "KontaktTextHeader": {
+                    "description": "Holt oder setzt die Überschrift für KontaktText.",
+                    "type": "string"
+                },
+                "Mandant": {
+                    "$ref": "#/definitions/LookupDto",
+                    "description": "Holt oder setzt den Mandant."
+                },
+                "PersoenlicheAnforderungen": {
+                    "description": "Holt oder setzt die PersoenlicheAnforderungen.",
+                    "type": "string"
+                },
+                "PersoenlicheAnforderungenHeader": {
+                    "description": "Holt oder setzt die Überschrift für die persönlichen Anforderungen.",
+                    "type": "string"
+                },
+                "Perspektiven": {
+                    "description": "Holt oder setzt die Perspektiven.",
+                    "type": "string"
+                },
+                "PerspektivenHeader": {
+                    "description": "Holt oder setzt die Überschrift für die Perspektiven.",
+                    "type": "string"
+                },
+                "StellenID": {
+                    "description": "Holt oder setzt die StellenID.",
+                    "type": "string"
+                },
+                "Stellenziel": {
+                    "description": "Holt oder setzt das Stellenziel.",
+                    "type": "string"
+                },
+                "StellenzielHeader": {
+                    "description": "Holt oder setzt die Überschrift zum Stellenziel.",
+                    "type": "string"
+                },
+                "Tarifvertrag": {
+                    "description": "Holt oder setzt den Tarifvertrag.",
+                    "type": "string"
+                },
+                "Unternehmensbedeutung": {
+                    "description": "Holt oder setzt die Unternehmensbedeutung.",
+                    "type": "string"
+                },
+                "UnternehmensbedeutungHeader": {
+                    "description": "Holt oder setzt die Überschrift für die Unternehmensbedeutung.",
+                    "type": "string"
+                },
+                "Vakanzen": {
+                    "format": "int32",
+                    "description": "Holt oder setzt die Vakanzen.",
+                    "type": "integer"
+                }
+            }
+        },
+        "PublicStelleReadOnlyDto": {
+            "description": "Die Daten einer Stelle",
+            "type": "object",
+            "properties": {
+                "Abteilung": {
+                    "description": "Die Abteilung",
+                    "type": "string"
+                },
+                "Arbeitgeberleistung": {
+                    "description": "Die Arbeitgeberleistung",
+                    "type": "string"
+                },
+                "ArbeitgeberleistungHeader": {
+                    "description": "Die Überschrift zur Arbeitgeberleistung",
+                    "type": "string"
+                },
+                "Arbeitgebervorstellung": {
+                    "description": "Die Arbeitgebervorstellung",
+                    "type": "string"
+                },
+                "ArbeitgebervorstellungHeader": {
+                    "description": "Die Überschrift zur Arbeitgebervorstellung",
+                    "type": "string"
+                },
+                "Aufgaben": {
+                    "description": "Die Aufgaben",
+                    "type": "string"
+                },
+                "AufgabenHeader": {
+                    "description": "Die Überschrift zu den Aufgaben",
+                    "type": "string"
+                },
+                "Befristung": {
+                    "format": "date-time",
+                    "description": "Die Befristung",
+                    "type": "string"
+                },
+                "Befristungsgrund": {
+                    "description": "Der Befristungsgrund",
+                    "type": "string"
+                },
+                "Beginn": {
+                    "format": "date-time",
+                    "description": "Der Beginn",
+                    "type": "string"
+                },
+                "BeginnAbSofort": {
+                    "description": "Wert, der angibt, ob die Stelle ab sofort beginnt.",
+                    "type": "boolean"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung.",
+                    "type": "string"
+                },
+                "BezeichnungAusschreibung": {
+                    "description": "Der Titel für die Stellenanzeige",
+                    "type": "string"
+                },
+                "DatumAb": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "DatumBis": {
+                    "format": "date-time",
+                    "description": "Das Datum Veroeffentlicht bis",
+                    "type": "string"
+                },
+                "EinsatzortGeografischeBreite": {
+                    "format": "double",
+                    "description": "Die geografische Breite des Einsatzortes",
+                    "type": "number"
+                },
+                "EinsatzortGeografischeLaenge": {
+                    "format": "double",
+                    "description": "Die geografische Laenge des Einsatzortes",
+                    "type": "number"
+                },
+                "EinsatzortLand": {
+                    "description": "Das Land des Einsatzortes",
+                    "type": "string"
+                },
+                "EinsatzortOrt": {
+                    "description": "Der Einsatzort",
+                    "type": "string"
+                },
+                "EinsatzortPlz": {
+                    "description": "Die Postleitzahl des Einsatzortes",
+                    "type": "string"
+                },
+                "FachlicheAnforderungen": {
+                    "description": "Die fachlichen Anforderungen",
+                    "type": "string"
+                },
+                "FachlicheAnforderungenHeader": {
+                    "description": "Die Überschrift für die fachlichen Anforderungen",
+                    "type": "string"
+                },
+                "Image1Uuid": {
+                    "format": "uuid",
+                    "description": "Die Uuid des Image1",
+                    "type": "string"
+                },
+                "ImageKontaktUuid": {
+                    "format": "uuid",
+                    "description": "Die Uuid des Kontaktbildes",
+                    "type": "string"
+                },
+                "KontaktText": {
+                    "description": "Der Text mit Kontaktinformationen",
+                    "type": "string"
+                },
+                "KontaktTextHeader": {
+                    "description": "Die Überschrift für den Kontakttext",
+                    "type": "string"
+                },
+                "Logo1Uuid": {
+                    "format": "uuid",
+                    "description": "Die Uuid für das Logo1",
+                    "type": "string"
+                },
+                "Mandant": {
+                    "$ref": "#/definitions/PublicStelleMandantReadOnlyDto",
+                    "description": "Der Mandant"
+                },
+                "PersoenlicheAnforderungen": {
+                    "description": "Die persoenlichen Anforderungen",
+                    "type": "string"
+                },
+                "PersoenlicheAnforderungenHeader": {
+                    "description": "Die Überschrift für die persönlichen Anforderungen",
+                    "type": "string"
+                },
+                "Perspektiven": {
+                    "description": "Die Perspektiven",
+                    "type": "string"
+                },
+                "PerspektivenHeader": {
+                    "description": "Die Überschrift für die Perspektiven",
+                    "type": "string"
+                },
+                "StelleBewerbungUrl": {
+                    "description": "Die Url zum Bewerbungsformular der Stelle",
+                    "type": "string"
+                },
+                "StellenID": {
+                    "description": "Die StellenID",
+                    "type": "string"
+                },
+                "Stellenziel": {
+                    "description": "Das Stellenziel",
+                    "type": "string"
+                },
+                "StellenzielHeader": {
+                    "description": "Die Überschrift zum Stellenziel",
+                    "type": "string"
+                },
+                "Unternehmensbedeutung": {
+                    "description": "Die Unternehmensbedeutung",
+                    "type": "string"
+                },
+                "UnternehmensbedeutungHeader": {
+                    "description": "Die Überschrift für die Unternehmensbedeutung",
+                    "type": "string"
+                },
+                "Vakanzart": {
+                    "description": "Die Vakanzart",
+                    "type": "string"
+                },
+                "Vakanzarten": {
+                    "description": "Die Vakanzarten",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LookupDto"
+                    }
+                },
+                "Vakanzen": {
+                    "format": "double",
+                    "description": "Die Vakanzen",
+                    "type": "number"
+                },
+                "Vertragsart": {
+                    "description": "Die Vertragsarten",
+                    "type": "string"
+                },
+                "Vertragsarten": {
+                    "description": "Die Vertragsarten",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LookupDto"
+                    }
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "PublicStelleMandantReadOnlyDto": {
+            "description": "Die Daten des Mandanten der Stelle",
+            "type": "object",
+            "properties": {
+                "AdresseHausnummer": {
+                    "description": "Die Hausnummer",
+                    "type": "string"
+                },
+                "AdresseOrt": {
+                    "description": "Der Ort",
+                    "type": "string"
+                },
+                "AdressePlz": {
+                    "description": "Die PLZ",
+                    "type": "string"
+                },
+                "AdresseStrasse": {
+                    "description": "Die Strasse",
+                    "type": "string"
+                },
+                "Firmenbezeichnung": {
+                    "description": "Die Firmenbezeichnung",
+                    "type": "string"
+                },
+                "MandantUuid": {
+                    "format": "uuid",
+                    "description": "Die Uuid des Mandanten",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "Website": {
+                    "description": "Die Website",
+                    "type": "string"
+                },
+                "ObjectUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-Uuid",
+                    "type": "string"
+                }
+            }
+        },
+        "PaginationResultDto[PublicStelleListeReadOnlyDto]": {
+            "description": "Das Pagination Ergebnis-Dto",
+            "type": "object",
+            "properties": {
+                "Items": {
+                    "description": "Die Ergebnisse der angeforderten Seite",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PublicStelleListeReadOnlyDto"
+                    }
+                },
+                "TotalItems": {
+                    "format": "int32",
+                    "description": "Anzahl der gefundenen Ergebnisse",
+                    "type": "integer"
+                }
+            }
+        },
+        "PublicStelleListeReadOnlyDto": {
+            "description": "Die Daten einer Stelle in der Stellenliste",
+            "type": "object",
+            "properties": {
+                "Abteilung": {
+                    "description": "Die Abteilung",
+                    "type": "string"
+                },
+                "Beginn": {
+                    "format": "date-time",
+                    "description": "Das Datum des Beginns",
+                    "type": "string"
+                },
+                "BeginnAbSofort": {
+                    "description": "Wert, der angibt, ob die Stelle ab sofort beginnt.",
+                    "type": "boolean"
+                },
+                "Bezeichnung": {
+                    "description": "Die Bezeichnung.",
+                    "type": "string"
+                },
+                "DatumAb": {
+                    "format": "date-time",
+                    "description": "Das Datum ab dem die Stelle veröffentlicht wurde",
+                    "type": "string"
+                },
+                "EinsatzortGeoLocation": {
+                    "$ref": "#/definitions/PublicStelleGeoLocationDto",
+                    "description": "Die Geo-Kordinaten des Einsatzortes"
+                },
+                "EinsatzortOrt": {
+                    "description": "Der Einsatzort",
+                    "type": "string"
+                },
+                "EinsatzortPlz": {
+                    "description": "Die PLZ des Einsatzortes",
+                    "type": "string"
+                },
+                "Entfernung": {
+                    "format": "double",
+                    "description": "Die bei der Umkreissuche ermittelte Distanz zum Standort in km",
+                    "type": "number"
+                },
+                "LinkSlug": {
+                    "description": "Der Link-Slug der Stelle",
+                    "type": "string"
+                },
+                "MandantUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-UUID des Mandanten",
+                    "type": "string"
+                },
+                "StellenID": {
+                    "description": "Die StellenID",
+                    "type": "string"
+                },
+                "StelleUuid": {
+                    "format": "uuid",
+                    "description": "Die Object-UUID der Stelle",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "Vakanzarten": {
+                    "description": "Die Vakanzarten",
+                    "type": "string"
+                },
+                "Vertragsarten": {
+                    "description": "Die Vertragsarten",
+                    "type": "string"
+                }
+            }
+        },
+        "PublicStelleGeoLocationDto": {
+            "description": "Die Geo-Kordinaten einer Location",
+            "type": "object",
+            "properties": {
+                "Lat": {
+                    "format": "double",
+                    "description": "Die geografische Breite der Location",
+                    "type": "number"
+                },
+                "Lon": {
+                    "format": "double",
+                    "description": "Die geografische Laenge der Location",
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

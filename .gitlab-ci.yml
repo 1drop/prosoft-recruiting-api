@@ -1,0 +1,32 @@
+stages:
+  - lint
+
+variables:
+  CACHE_DIR: .cache
+  BASE_PATH: ${CI_PROJECT_DIR}/app/Repository/${SITE_PACKAGE}/
+  SCRIPTS_PATH: 'JavaScript/main.js'
+  COMPOSER_CACHE_DIR: ${CI_PROJECT_DIR}/${CACHE_DIR}/composer
+
+cache:
+  key: global
+  paths:
+    - $CACHE_DIR
+
+#####################################
+#           LINTING                 #
+#####################################
+lint:php:
+  image: 1drop/php-72-docker-utils
+  stage: lint
+  cache:
+    policy: pull
+  script:
+    - php-cs-fixer fix -v --dry-run --using-cache=no
+
+lint:xlf:
+  image: 1drop/php-72-docker-utils
+  stage: lint
+  cache:
+    policy: pull
+  script:
+    - find ./Resources -type f -name "*.xlf" -print0 | xargs -0 -n1 /root/.composer/vendor/bin/xml-linter

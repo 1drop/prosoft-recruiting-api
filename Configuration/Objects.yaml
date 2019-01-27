@@ -1,0 +1,28 @@
+# Object configuration for Swagger auto-generated client
+Prosoft\RecruitingApi\ApiConfiguration:
+  properties:
+    host:
+      setting: Prosoft.Recruiting.apiUrl
+    fullApiKey:
+      setting: Prosoft.Recruiting.apiKey
+
+Prosoft\RecruitingApi\Api\Endpoints\BewerberApi:
+  arguments:
+    2:
+      object: 'Prosoft\RecruitingApi\ApiConfiguration'
+Prosoft\RecruitingApi\Api\Endpoints\StelleApi:
+  arguments:
+    2:
+      object: 'Prosoft\RecruitingApi\ApiConfiguration'
+Prosoft\RecruitingApi\Api\Endpoints\BewerbungApi:
+  arguments:
+    2:
+      object: 'Prosoft\RecruitingApi\ApiConfiguration'
+Prosoft\RecruitingApi\ApplicationApi:
+  arguments:
+    2:
+      object: 'Prosoft\RecruitingApi\ApiConfiguration'
+Prosoft\RecruitingApi\Api\Endpoints\KatalogApi:
+  arguments:
+    2:
+      object: 'Prosoft\RecruitingApi\ApiConfiguration'
